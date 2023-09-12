@@ -1,16 +1,8 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import React, {useEffect} from 'react'
+import Tools from './Tools'
+import young from '../assets/young.png'
 
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom'
-import Home from './pages/Home'
-import Pricing from './pages/Pricing'
-import Contact from './pages/Contact'
-import Signup from './pages/Signup'
-
-function App() {
-  {/* from left anmation */}
+function ToolGroup() {
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
         entries.forEach((entry) => {
@@ -64,39 +56,17 @@ function App() {
         observer.observe(element)
     }
    }, [])
-  {/* from right anmation */}
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('setr')
-            } else {
-                entry.target.classList.remove('setr')
-            }
-        })
-    })
-    const hidden = document.querySelectorAll('.right')
-    
-    for (let i = 0; i < hidden.length; i++) {
-        const element = hidden[i];
-        observer.observe(element)
-    }
-   }, [])
-   
-
-
   return (
-    <>
-        
-        <Navbar />
-        <div id="co">
-            <Outlet />
+    <div className='cas'>
+        <div className="young hidden">
+            <img src={young} alt="" />
         </div>
-        
-    </>
+        <div className="too">
+            <span className='title right'>One Tool For Your Whole Company</span>
+            <Tools />
+        </div>
+    </div>
   )
-
 }
 
-export default App
+export default ToolGroup
